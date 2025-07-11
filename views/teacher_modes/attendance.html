@@ -1,0 +1,78 @@
+<div class="p-2 md:p-4">
+    <h2 class="text-2xl font-bold mb-6 text-gray-800">จัดการเช็คเวลาเรียน</h2>
+
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
+            <div>
+                <label class="block text-gray-700 mb-2 font-semibold">วันที่</label>
+                <input type="date" id="attendance-date" class="w-full px-3 py-2 border rounded-lg">
+            </div>
+            <div>
+                <label class="block text-gray-700 mb-2 font-semibold">รายวิชา</label>
+                <select id="attendance-subject" class="w-full px-3 py-2 border rounded-lg">
+                    <option value="all">ทุกรายวิชา</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-gray-700 mb-2 font-semibold">ระดับชั้น</label>
+                <select id="attendance-class" class="w-full px-3 py-2 border rounded-lg">
+                    <option value="all">ทุกระดับชั้น</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-gray-700 mb-2 font-semibold">ห้องเรียน</label>
+                <select id="attendance-classroom" class="w-full px-3 py-2 border rounded-lg">
+                    <option value="">ทุกห้องเรียน</option>
+                </select>
+            </div>
+        </div>
+        <div class="text-center mt-6">
+            <button id="start-attendance" class="bg-pink-500 hover:bg-pink-600 text-white px-8 py-3 rounded-lg text-lg font-bold">
+                เริ่มเช็คชื่อ / แสดงข้อมูล
+            </button>
+        </div>
+    </div>
+
+    <div id="attendance-list" class="hidden">
+        <div class="bg-white rounded-lg shadow-md p-4">
+            <div class="flex flex-wrap justify-between items-center mb-4 gap-3">
+                <h3 class="text-xl font-bold text-gray-800">รายชื่อนักเรียน</h3>
+                <div class="flex flex-wrap gap-2">
+                    <button id="mark-all-present" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm">
+                        มาเรียนทั้งหมด
+                    </button>
+                    <button id="reset-attendance" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg text-sm">
+                        ยกเลิกทั้งหมด
+                    </button>
+                </div>
+            </div>
+        
+            <div class="overflow-x-auto">
+                <table id="attendance-table" class="w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="p-3 text-sm font-semibold text-left">ลำดับ</th>
+                            <th class="p-3 text-sm font-semibold text-left">รหัสนักเรียน</th>
+                            <th class="p-3 text-sm font-semibold text-left">ชื่อ-นามสกุล</th>
+                            <th class="p-3 text-sm font-semibold text-left">ระดับชั้น</th>
+                            <th class="p-3 text-sm font-semibold text-left">ห้อง</th>
+                            <th class="p-3 text-sm font-semibold text-left">รหัสวิชา</th>
+                            <th class="p-3 text-sm font-semibold text-left">รายวิชา</th>
+                            <th class="p-3 text-sm font-semibold text-center">สถานะ</th>
+                            <th class="p-3 text-sm font-semibold text-left">หมายเหตุ</th>
+                            <th class="p-3 text-sm font-semibold text-center">จัดการ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+            </div>
+
+        <div class="text-center mt-6">
+            <button id="save-attendance" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-lg text-xl font-bold">
+                บันทึกข้อมูลการเช็คชื่อ
+            </button>
+        </div>
+    </div>
+</div>

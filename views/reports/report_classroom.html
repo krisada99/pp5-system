@@ -1,0 +1,93 @@
+<div class="p-2 md:p-4">
+    <h2 class="text-2xl font-bold mb-6 text-gray-800">รายงานตามห้องเรียน</h2>
+
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 items-end">
+            <div>
+                <label class="block text-gray-700 mb-2 font-semibold">วันที่เริ่มต้น</label>
+                <input type="date" id="classroom-report-start-date" class="w-full px-3 py-2 border rounded-lg">
+            </div>
+            <div>
+                <label class="block text-gray-700 mb-2 font-semibold">วันที่สิ้นสุด</label>
+                <input type="date" id="classroom-report-end-date" class="w-full px-3 py-2 border rounded-lg">
+            </div>
+            <div>
+                <label class="block text-gray-700 mb-2 font-semibold">ระดับชั้น</label>
+                <select id="classroom-report-class" class="w-full px-3 py-2 border rounded-lg">
+                    <option value="all">ทุกระดับชั้น</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-gray-700 mb-2 font-semibold">ห้องเรียน</label>
+                <select id="classroom-report-classroom" class="w-full px-3 py-2 border rounded-lg">
+                    <option value="">ทุกห้องเรียน</option>
+                </select>
+            </div>
+            <div class="xl:col-span-1">
+                <label class="block text-gray-700 mb-2 font-semibold">รายวิชา</label>
+                <select id="classroom-report-subject" class="w-full px-3 py-2 border rounded-lg">
+                    <option value="">ทุกรายวิชา</option>
+                </select>
+            </div>
+        </div>
+        <div class="text-center mt-6">
+            <button id="generate-classroom-report" class="bg-pink-500 hover:bg-pink-600 text-white px-8 py-3 rounded-lg text-lg font-bold">
+                ดูรายงานสรุป
+            </button>
+        </div>
+    </div>
+
+    <div id="classroom-report-results" class="hidden">
+        <div class="bg-white rounded-lg shadow-md p-4">
+            <div class="text-center mb-4 space-x-2">
+                <button id="classroom-export-csv" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg">ดาวน์โหลด (.CSV)</button>
+                <button id="classroom-export-xlsx" class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg">ดาวน์โหลด (.XLSX)</button>
+                <button id="classroom-export-pdf" class="bg-purple-500 hover:bg-purple-600 text-white px-6 py-2 rounded-lg">ดาวน์โหลด (.PDF)</button>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table id="classroom-report-table" class="w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="p-3 text-sm font-semibold text-left">ลำดับ</th>
+                            <th class="p-3 text-sm font-semibold text-left">วันที่</th>
+                            <th class="p-3 text-sm font-semibold text-left">ระดับชั้น</th>
+                            <th class="p-3 text-sm font-semibold text-left">ห้องเรียน</th>
+                            <th class="p-3 text-sm font-semibold text-left">รหัสวิชา</th>
+                            <th class="p-3 text-sm font-semibold text-left">ชื่อวิชา</th>
+                            <th class="p-3 text-sm font-semibold text-center">จำนวน น.ร.</th>
+                            <th class="present-column p-3 text-sm font-semibold text-center">มาเรียน</th>
+                            <th class="absent-column p-3 text-sm font-semibold text-center">ขาดเรียน</th>
+                            <th class="leave-column p-3 text-sm font-semibold text-center">ลา</th>
+                            <th class="late-column p-3 text-sm font-semibold text-center">มาสาย</th>
+                        </tr>
+                    </thead>
+                    <tbody id="classroom-report-table-body">
+                        </tbody>
+                </table>
+            </div>
+             </div>
+        
+        <div class="summary-report mt-6">
+            <h3 class="text-xl font-bold mb-4 text-gray-800">ผลรวมทั้งหมดในช่วงวันที่เลือก</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="p-4 bg-green-50 rounded-lg text-center">
+                    <h4 class="text-lg font-semibold text-green-800">มาเรียนทั้งหมด</h4>
+                    <p class="text-3xl font-bold text-green-600" id="summary-present">0</p>
+                </div>
+                <div class="p-4 bg-red-50 rounded-lg text-center">
+                    <h4 class="text-lg font-semibold text-red-800">ขาดเรียนทั้งหมด</h4>
+                    <p class="text-3xl font-bold text-red-600" id="summary-absent">0</p>
+                </div>
+                <div class="p-4 bg-yellow-50 rounded-lg text-center">
+                    <h4 class="text-lg font-semibold text-yellow-800">ลาทั้งหมด</h4>
+                    <p class="text-3xl font-bold text-yellow-600" id="summary-leave">0</p>
+                </div>
+                <div class="p-4 bg-pink-50 rounded-lg text-center">
+                    <h4 class="text-lg font-semibold text-pink-800">มาสายทั้งหมด</h4>
+                    <p class="text-3xl font-bold text-pink-600" id="summary-late">0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,127 @@
+<div id="attendance-dashboard-view">
+    <h2 class="text-3xl font-bold mb-6 text-gray-800" style="animation: fadeInUp 0.5s ease-out forwards; opacity: 0;">ภาพรวมการเข้าเรียนวันนี้</h2>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-8">
+        <div class="stat-card-new">
+            <div class="stat-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                    <path fill-rule="evenodd" d="M8.25 6.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0ZM15.75 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM2.25 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM6.31 15.117A6.745 6.745 0 0 1 12 12a6.745 6.745 0 0 1 6.709 7.498.75.75 0 0 1-.372.568A12.696 12.696 0 0 1 12 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 0 1-.372-.568 6.787 6.787 0 0 1 1.019-4.38Z" clip-rule="evenodd" />
+                    <path d="M5.082 14.254a8.287 8.287 0 0 0-1.308 5.135 9.687 9.687 0 0 1-1.764-.44l-.115-.04a.563.563 0 0 1-.373-.487l-.01-.121a3.75 3.75 0 0 1 3.57-4.047ZM20.226 19.389a8.287 8.287 0 0 0-1.308-5.135 3.75 3.75 0 0 1 3.57 4.047l-.01.121a.563.563 0 0 1-.373.486l-.115.04c-.567.2-1.156.349-1.764.441Z" />
+                </svg>
+            </div>
+            <div class="stat-info">
+                <h3>นักเรียนทั้งหมด</h3>
+                <p id="total-students">0</p>
+            </div>
+        </div>
+        <div class="stat-card-new">
+            <div class="stat-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            </div>
+            <div class="stat-info">
+                <h3>มาเรียนวันนี้</h3>
+                <p id="present-students">0</p>
+            </div>
+        </div>
+        <div class="stat-card-new">
+            <div class="stat-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            </div>
+            <div class="stat-info">
+                <h3>ขาดเรียนวันนี้</h3>
+                <p id="absent-students">0</p>
+            </div>
+        </div>
+        <div class="stat-card-new">
+            <div class="stat-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0h18M-4.5 12h22.5" /></svg>
+            </div>
+            <div class="stat-info">
+                <h3>ลาวันนี้</h3>
+                <p id="leave-students">0</p>
+            </div>
+        </div>
+        <div class="stat-card-new">
+            <div class="stat-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            </div>
+            <div class="stat-info">
+                <h3>มาสายวันนี้</h3>
+                <p id="late-students">0</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 mt-8">
+        <div class="lg:col-span-2 chart-container">
+            <h3 class="text-xl font-bold mb-4 text-gray-700">สถิติการมาเรียนวันนี้</h3>
+            <div class="relative" style="height: 300px;"><canvas id="attendance-pie-chart"></canvas></div>
+        </div>
+        <div class="lg:col-span-3 chart-container">
+            <h3 class="text-xl font-bold mb-4 text-gray-700">5 อันดับนักเรียนที่มาเรียนสูงสุด</h3>
+            <div class="relative" style="height: 300px;"><canvas id="top-present-bar-chart"></canvas></div>
+        </div>
+    </div>
+</div>
+
+
+<div id="scoring-dashboard-view" class="hidden">
+    <h2 class="text-3xl font-bold mb-6 text-gray-800" style="animation: fadeInUp 0.5s ease-out forwards; opacity: 0;">ภาพรวมผลการเรียน</h2>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="stat-card-new">
+            <div class="stat-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                    <path fill-rule="evenodd" d="M7.502 6h7.128A3.375 3.375 0 0 1 18 9.375v9.375a3 3 0 0 0 3-3V6.108c0-1.505-1.125-2.811-2.664-2.94a48.972 48.972 0 0 0-.673-.05A3 3 0 0 0 15 1.5h-1.5a3 3 0 0 0-2.663 1.618c-.225.015-.45.032-.673.05C8.662 3.295 7.554 4.542 7.502 6ZM13.5 3A1.5 1.5 0 0 0 12 4.5h4.5A1.5 1.5 0 0 0 15 3h-1.5Z" clip-rule="evenodd" />
+                    <path fill-rule="evenodd" d="M3 9.375C3 8.339 3.84 7.5 4.875 7.5h9.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-9.75A1.875 1.875 0 0 1 3 20.625V9.375ZM6 12a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H6.75a.75.75 0 0 1-.75-.75V12Zm2.25 0a.75.75 0 0 1 .75-.75h3.75a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75ZM6 15a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H6.75a.75.75 0 0 1-.75-.75V15Zm2.25 0a.75.75 0 0 1 .75-.75h3.75a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75ZM6 18a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H6.75a.75.75 0 0 1-.75-.75V18Zm2.25 0a.75.75 0 0 1 .75-.75h3.75a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            <div class="stat-info">
+                <h3>คะแนนเฉลี่ยรวม</h3>
+                <p id="score-avg">0.00</p>
+            </div>
+        </div>
+         <div class="stat-card-new">
+            <div class="stat-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                    <path fill-rule="evenodd" d="M2.25 4.5A.75.75 0 0 1 3 3.75h14.25a.75.75 0 0 1 0 1.5H3a.75.75 0 0 1-.75-.75Zm14.47 3.97a.75.75 0 0 1 1.06 0l3.75 3.75a.75.75 0 1 1-1.06 1.06L18 10.81V21a.75.75 0 0 1-1.5 0V10.81l-2.47 2.47a.75.75 0 1 1-1.06-1.06l3.75-3.75ZM2.25 9A.75.75 0 0 1 3 8.25h9.75a.75.75 0 0 1 0 1.5H3A.75.75 0 0 1 2.25 9Zm0 4.5a.75.75 0 0 1 .75-.75h5.25a.75.75 0 0 1 0 1.5H3a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            <div class="stat-info">
+                <h3>คะแนนสูงสุด</h3>
+                <p id="score-max">0</p>
+            </div>
+        </div>
+         <div class="stat-card-new">
+            <div class="stat-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                    <path fill-rule="evenodd" d="M2.25 4.5A.75.75 0 0 1 3 3.75h14.25a.75.75 0 0 1 0 1.5H3a.75.75 0 0 1-.75-.75Zm0 4.5A.75.75 0 0 1 3 8.25h9.75a.75.75 0 0 1 0 1.5H3A.75.75 0 0 1 2.25 9Zm15-.75A.75.75 0 0 1 18 9v10.19l2.47-2.47a.75.75 0 1 1 1.06 1.06l-3.75 3.75a.75.75 0 0 1-1.06 0l-3.75-3.75a.75.75 0 1 1 1.06-1.06l2.47 2.47V9a.75.75 0 0 1 .75-.75Zm-15 5.25a.75.75 0 0 1 .75-.75h9.75a.75.75 0 0 1 0 1.5H3a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            <div class="stat-info">
+                <h3>คะแนนต่ำสุด</h3>
+                <p id="score-min">0</p>
+            </div>
+        </div>
+        <div class="stat-card-new">
+            <div class="stat-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" /></svg>
+            </div>
+            <div class="stat-info">
+                <h3>นักเรียนที่ประเมิน</h3>
+                <p id="score-graded-students">0</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 mt-8">
+        <div class="lg:col-span-2 chart-container">
+            <h3 class="text-xl font-bold mb-4 text-gray-700">การกระจายของเกรด</h3>
+            <div class="relative" style="height: 300px;"><canvas id="grade-distribution-pie-chart"></canvas></div>
+        </div>
+        <div class="lg:col-span-3 chart-container">
+            <h3 class="text-xl font-bold mb-4 text-gray-700">คะแนนเฉลี่ยแต่ละองค์ประกอบ</h3>
+            <div class="relative" style="height: 300px;"><canvas id="component-average-bar-chart"></canvas></div>
+        </div>
+    </div>
+</div>

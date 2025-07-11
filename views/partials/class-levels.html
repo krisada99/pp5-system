@@ -1,0 +1,40 @@
+<div class="p-2 md:p-4">
+    <h2 class="text-2xl font-bold mb-6 text-gray-800">จัดการระดับชั้น</h2>
+
+    <div class="bg-white rounded-lg shadow-md p-6">
+        <form id="class-levels-form">
+            <div class="mb-8 p-4 border rounded-lg bg-gray-50">
+                <label for="school-type-name" class="block text-gray-700 mb-2 font-semibold text-lg">
+                    ชื่อประเภทสถานศึกษา
+                </label>
+                <input type="text" id="school-type-name" name="school-type-name" class="w-full px-4 py-2 border rounded-lg text-base" value="" placeholder="เช่น โรงเรียน, วิทยาลัย, มหาวิทยาลัย" required>
+                <p class="text-sm text-gray-500 mt-2">
+                    * ชื่อนี้จะถูกนำไปใช้ในหน้าปกรายงานต่างๆ เช่น "ผู้อำนวยการโรงเรียน..."
+                </p>
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-gray-700 mb-2 font-semibold text-lg">
+                    เลือกระดับชั้นที่เปิดสอนในสถานศึกษา
+                </label>
+                <p class="text-sm text-gray-500 mb-4">
+                    * การเลือกที่นี่จะส่งผลต่อ Dropdown ทั้งหมดในระบบ เช่น หน้าเพิ่มนักเรียน, หน้าจัดการครู, และหน้ารายงาน
+                </p>
+                <div id="class-levels-checkbox-container" class="space-y-4">
+                    <div class="text-center p-8 text-gray-400">
+                        กำลังโหลดข้อมูลระดับชั้น...
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-8 border-t pt-6">
+                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-bold text-lg w-full md:w-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block -mt-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    บันทึกการตั้งค่าระดับชั้น
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

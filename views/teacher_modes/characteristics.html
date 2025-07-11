@@ -1,0 +1,46 @@
+<div id="characteristics-container" class="p-2 md:p-4">
+    <h2 class="text-2xl font-bold mb-6 text-gray-800">ประเมินคุณลักษณะอันพึงประสงค์ และการอ่าน คิดวิเคราะห์ และเขียน</h2>
+
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-end">
+            <div>
+                <label class="block text-gray-700 mb-2 font-semibold">ระดับชั้น</label>
+                <select id="characteristics-class" class="w-full px-3 py-2 border rounded-lg"></select>
+            </div>
+            <div>
+                <label class="block text-gray-700 mb-2 font-semibold">ห้องเรียน</label>
+                <select id="characteristics-classroom" class="w-full px-3 py-2 border rounded-lg"></select>
+            </div>
+        </div>
+        <div class="text-center mt-6">
+            <button id="start-characteristics-evaluation-btn" class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-lg hidden text-lg font-bold">
+                เริ่มการประเมิน
+            </button>
+        </div>
+    </div>
+
+    <div id="characteristics-content-area" class="hidden">
+        <div class="bg-white rounded-lg shadow-md p-4">
+            <div class="flex justify-end items-center mb-4">
+                <button id="save-characteristics-btn" class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-bold">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M7.707 10.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V6h5a1 1 0 011 1v7a1 1 0 01-1 1H4a1 1 0 01-1-1V7a1 1 0 011-1h5v5.586l-1.293-1.293zM9 4a1 1 0 012 0v2H9V4z" />
+                    </svg>
+                    บันทึกผลการประเมิน
+                </button>
+            </div>
+            <div class="report-table-container" style="max-height: 75vh;">
+                <table id="characteristics-table" class="w-full report-table">
+                    <thead id="characteristics-table-head">
+                        </thead>
+                    <tbody id="characteristics-table-body">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div id="characteristics-placeholder" class="text-center p-10 bg-white rounded-lg shadow-md">
+        <p class="text-gray-500 text-lg">กรุณาเลือกระดับชั้นและห้องเรียน เพื่อเริ่มการประเมิน</p>
+    </div>
+</div>

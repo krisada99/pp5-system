@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ล็อกอิน - {{SYSTEM_NAME}}</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: {{THEME_COLOR}};
+        }
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .login-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            max-width: 420px;
+            width: 100%;
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover {
+            filter: brightness(90%);
+        }
+        .error {
+            color: #F44336;
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+        .loading {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+        .loading-content p {
+            color: var(--primary-color);
+        }
+        .loading-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .spinner {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .login-tab {
+            cursor: pointer;
+            padding: 0.75rem 1rem;
+            border-bottom: 3px solid transparent;
+            color: #6B7280;
+        }
+        .login-tab.active {
+            border-bottom-color: var(--primary-color);
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        .login-form-content {
+            display: none;
+        }
+        .login-form-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <header class="py-2" style="background-color: {{THEME_LIGHT_COLOR}};">
+        <div class="container mx-auto px-4 flex justify-center items-center">
+            <div class="flex items-center space-x-3">
+                <img src="{{LOGO_URL}}" alt="โลโก้โรงเรียน" class="h-12 w-auto">
+                <h1 class="text-xl md:text-2xl font-bold text-gray-800">{{HEADER_TEXT}}</h1>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center px-4 py-6">
+        <div class="login-container">
+            <div class="flex border-b mb-6">
+                <div id="teacher-tab" class="login-tab active flex-1 text-center">สำหรับครู/ผู้ดูแลระบบ</div>
+                <div id="student-tab" class="login-tab flex-1 text-center">สำหรับนักเรียน</div>
+            </div>
+
+            <div id="teacher-form-content" class="login-form-content active">
+                <h2 class="text-xl font-bold mb-6 text-center text-gray-800">ล็อกอินสำหรับครู/ผู้ดูแลระบบ</h2>
+                <form id="login-form">
+                    <div class="mb-4">
+                        <label for="username" class="block text-gray-700 mb-2">ชื่อผู้ใช้</label>
+                        <input type="text" id="username" name="username" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="password" class="block text-gray-700 mb-2">รหัสผ่าน</label>
+                        <input type="password" id="password" name="password" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2" required>
+                    </div>
+                    <div class="flex justify-between items-center mb-4">
+                        <button type="submit" class="btn-primary px-6 py-2 rounded-lg w-full">เข้าสู่ระบบ</button>
+                    </div>
+                    <div class="text-center">
+                        <a href="#" id="forgot-password" class="hover:underline text-sm">ลืมรหัสผ่าน? (สำหรับครู)</a>
+                    </div>
+                </form>
+            </div>
+
+            <div id="student-form-content" class="login-form-content">
+                <h2 class="text-xl font-bold mb-6 text-center text-gray-800">นักเรียนตรวจสอบข้อมูลของตนเอง</h2>
+                <form id="student-login-form">
+                    <div class="mb-6">
+                        <label for="student-id" class="block text-gray-700 mb-2">กรุณากรอกรหัสนักเรียน</label>
+                        <input type="text" id="student-id" name="student-id" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2" required>
+                    </div>
+                    <div class="mb-4">
+                        <button type="submit" class="btn-primary px-6 py-2 rounded-lg w-full">ตรวจสอบข้อมูล</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-4 border-t" style="background-color: {{THEME_LIGHT_COLOR}};">
+        <div class="container mx-auto px-4 text-center text-gray-600">
+            <p>{{FOOTER_TEXT}}</p>
+        </div>
+    </footer>
+
+    <div id="loading-overlay" class="loading">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p class="mt-2">กำลังประมวลผล...</p>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+    
+    <script></script> 
+</body>
+</html>
